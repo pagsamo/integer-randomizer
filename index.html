@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Randomizer with a big headline</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+	<style>
+	</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-4">
+				<form action="">
+					<div class="panel panel-success">
+						<div class="panel-heading">
+							<h1>Parameters</h1>
+						</div><!-- panel-heading -->
+						<div class="panel-body">
+							<form action="">
+								<div class="form-group">
+									<label for="min">Min:</label>
+									<input id="min" type="text" class="form-control" placeholder="Minimum Value Here" value="1">
+								</div><!-- form-group -->
+								<div class="form-group">
+									<label for="max">Max:</label>
+									<input id="max" type="text" class="form-control" placeholder="Maximum Value Here" value="300">
+								</div><!-- form-group -->
+							</form><!-- form -->
+						</div><!-- panel-body -->
+						<div class="panel-footer">
+							<div class="input-group">
+								<div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div><input class="btn btn-success" type="button" id="trigger" value="Here goes!">
+							</div><!-- panel-footer -->
+						</div>
+					</div><!-- panel -->
+			</div><!-- col-sm-4 -->
+			<div class="col-sm-8">
+				<h1 id="resultNumber"></h1>
+			</div><!-- col-sm-8 -->
+		</div><!-- row -->
+	</div>
+	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script>
+
+		function vn(string)
+		{
+			var val = string.replace(',','');
+			return Number(string);
+		}
+
+		function getRandomNumber(min, max){
+			return _.random(min,max);
+		}
+
+		$('#trigger').click(function(){
+			var min, max, result;
+			
+			min = vn($('#min').val());
+			max = vn($('#max').val());
+			result = getRandomNumber(min,max);
+
+			$('#resultNumber').text(result);
+		})
+	</script>
+</body>
+</html>
